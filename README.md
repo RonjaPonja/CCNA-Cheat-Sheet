@@ -415,7 +415,7 @@ Note: NAT Table entries are kept for 24h after the last use by default.
 | (config-if)# standby [group-number] ip <ip>         | Join HSRP Group                                                  |
 | (config-if)# standby [group-number] priority <prio> | (optional) Set prio of this router.                              |
 | (config-if)# standby [group-number] preempt         | (optional) Preempt other routers when this router becomes active |
-| (config-if)# standby {1,2}                          | (optional) Set HSRP Version                                      |
+| (config-if)# standby version {1,2}                  | (optional) Set HSRP Version                                      |
 
 ### Troubleshooting HSRP
 
