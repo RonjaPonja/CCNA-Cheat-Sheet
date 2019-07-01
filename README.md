@@ -323,12 +323,14 @@ Default mask for standard ACLs: 0.0.0.0
 
 ## NAT
 
-| Termin         | Definition |
-|:---------------|:-----------|
-| inside local   |            |
-| inside global  |            |
-| outside global |            |
-| outside local  |            |
+Local addreses are any address as it appears inside the network. Global addresses are any address as it appears outside the network.
+
+| Term           | Definition                                                                   |
+|:---------------|:-----------------------------------------------------------------------------|
+| inside local   | IP address assigned to a host inside the newtork, non-routable               |
+| inside global  | IP address assigned by Network Information Center or ISP, routable           |
+| outside local  | IP address of a remote host as it appears inside the network, non-routable   |
+| outside global | IP address of a  remote host assigned by the host owner, routable            |
 
 | Command                                          | Description                                                          |
 |:-------------------------------------------------|:---------------------------------------------------------------------|
