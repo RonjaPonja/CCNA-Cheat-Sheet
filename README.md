@@ -145,6 +145,14 @@
 | (config)# errdisable recovery cause psecure-violation            | Reenable if automatically after problem is fixed.   |
 | (config)# errdisable recovery interval 42                        | Recheck every 42 seconds. (min 30, default 300)     |
 
+Port-secuirty violation terms
+
+| Term       | Definition                                           |
+|:-----------|:-----------------------------------------------------|
+| protect    | Drops packets, no alert                              |
+| restrict   | Drops packets, increments security-violation count   | 
+| shutdown   | Shuts down the port (default)                        |
+
 ### Troubleshooting Port Security
 
 | Command                               | Description                                            |
@@ -323,12 +331,14 @@ Default mask for standard ACLs: 0.0.0.0
 
 ## NAT
 
-| Termin         | Definition |
-|:---------------|:-----------|
-| inside local   |            |
-| inside global  |            |
-| outside global |            |
-| outside local  |            |
+Local addreses are any address as it appears inside the network. Global addresses are any address as it appears outside the network.
+
+| Term           | Definition                                                                   |
+|:---------------|:-----------------------------------------------------------------------------|
+| inside local   | IP address assigned to a host inside the newtork, non-routable               |
+| inside global  | IP address assigned by Network Information Center or ISP, routable           |
+| outside local  | IP address of a remote host as it appears inside the network, non-routable   |
+| outside global | IP address of a  remote host assigned by the host owner, routable            |
 
 | Command                                          | Description                                                          |
 |:-------------------------------------------------|:---------------------------------------------------------------------|
