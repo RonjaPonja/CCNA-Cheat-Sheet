@@ -20,7 +20,7 @@
 	- [Troubleshoot STP](#troubleshoot-stp)
 - [Etherchannel \(Link Aggregation\)](#etherchannel-link-aggregation)
 	- [Troubleshoot Etherchannel \(Link Aggregation\)](#troubleshoot-etherchannel-link-aggregation)
-- [TODO: Configure a Serial](#todo-configure-a-serial)
+- [Configure a Serial](#configure-a-serial)
 - [ACLs](#acls)
 	- [Interface ACLs](#interface-acls)
 	- [Troubleshooting ACLs](#troubleshooting-acls)
@@ -284,7 +284,15 @@ Look at modes again
 
 
 
-## TODO: Configure a Serial
+## Configure a Serial
+Layer 1 link speed is dictated by a CSU/DSU, in a lab without an external CSU/DSU a DTE (Data Termianl Equipment) cable and DCE (Data Communications Equipment) cable are used.
+
+| Command								  | Description       					            |
+|:----------------------------------------|:------------------------------------------------|
+| (config)# interface serial 1/0	      | Configure interface serial 1/0					|
+| (config-if)# clock rate 128000          | Set clock rate on DCE router side to 128 kbps	|
+| (config)# show controllers serial 1/0   | Verify clock rate for serial interface 1/0		|
+
 
 ## ACLs
 
