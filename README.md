@@ -18,9 +18,10 @@
 	- [Troubleshoot VTP](#troubleshoot-vtp)
 - [STP](#stp)
 	- [Troubleshoot STP](#troubleshoot-stp)
+	- [RSTP](#rstp)
 - [Etherchannel \(Link Aggregation\)](#etherchannel-link-aggregation)
 	- [Troubleshoot Etherchannel \(Link Aggregation\)](#troubleshoot-etherchannel-link-aggregation)
-- [TODO: Configure a Serial](#todo-configure-a-serial)
+- [Configure a Serial](#configure-a-serial)
 - [ACLs](#acls)
 	- [Interface ACLs](#interface-acls)
 	- [Troubleshooting ACLs](#troubleshooting-acls)
@@ -237,15 +238,16 @@ I'm not supposed to. Always disable DTP / trunk auto negotiation.
 
 
 ## STP
+Spaning Tree Protocol (802.1D) blocks ports with redundant links to prevent layer 2 loops and broadcast storms.
 
 | Command                                                  | Description                                          |
 |:---------------------------------------------------------|:-----------------------------------------------------|
 | (config)# spanning-tree vlan 1 root {primary, secondary} | Make this device the primary/secondary root bridge.  |
 | (config)# spanning-tree portfast bpduguard default       | Enable bpdu guard for all portfast enable interfaces |
 | (config)# spanning-tree portfast default                 | Enable portfast for all non-trunk interfaces         |
-| (config-if)# spanning-tree bpduguard enable              | enable gpduguard on this interface                   |
-| (config-if)# spanning-tree portfast                      | enable portfast on this interface                    |
-
+| (config-if)# spanning-tree bpduguard enable              | Enable gpduguard on this interface                   |
+| (config-if)# spanning-tree portfast                      | Enable portfast on this interface                    |
+| (config-if)# spanning-tree guard root                    | Enable root guard on this interface                  |
 
 ### Troubleshoot STP
 
@@ -255,6 +257,13 @@ I'm not supposed to. Always disable DTP / trunk auto negotiation.
 | # show spanning-tree summary                 | Is global portfast/bpduguard configured?            |
 | # show running-config interface g1/1         | Is portfast/bpduguard configured on this interface? |
 | # show spanning-tree interface g1/1 portfast | Is portfast active on this interface?               |
+
+### RSTP
+Rapid Spanning Tree Protocol (802.1w) reduces convergence time after a topology change compares to STP.
+
+| Command                                       | Description                          |
+|:----------------------------------------------|:-------------------------------------|
+| (config)# spanning-tree mode rapid-pvst       | Change spanning-tree mode to RSTP    |
 
 
 ## Etherchannel (Link Aggregation)
@@ -282,9 +291,15 @@ Look at modes again
 | # show etherchannel port-channel 1 | Show per member state and stats                       |
 
 
+## Configure a Serial
+Layer 1 link speed is dictated by a CSU/DSU, in a lab without an external CSU/DSU a DTE (Data Termianl Equipment) cable and DCE (Data Communications Equipment) cable are used.
 
+| Command                                 | Description                                     |
+|:----------------------------------------|:------------------------------------------------|
+| (config)# interface serial 1/0          | Configure interface serial 1/0                  |
+| (config-if)# clock rate 128000          | Set clock rate on DCE router side to 128 kbps   |
+| (config)# show controllers serial 1/0   | Verify clock rate for serial interface 1/0      |
 
-## TODO: Configure a Serial
 
 ## ACLs
 
