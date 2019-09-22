@@ -63,6 +63,7 @@
 - [EIGRP](#eigrp)
 	- [EIGRP with ipv6](#eigrp-with-ipv6)
 - [OSPF](#ospf)
+	- [Router Types](#router-types)
 	- [OSPF with ipv6 \(OSPFv3\)](#ospf-with-ipv6-ospfv3)
 	- [Troubleshooting OSPF](#troubleshooting-ospf)
 - [BGP](#bgp)
@@ -818,18 +819,25 @@ cost = reference bandwidth / interface bandwidth
 
 The default reference bandwith is 100Mbps. Everything faster has a cost of 1.
 
-| Command                                              | Description                                     |
-|:-----------------------------------------------------|:------------------------------------------------|
-| (config)# router ospf 1                              | 1 is the pid, not the area.                     |
-| (config-router)# router-id 1.2.3.4                   | Defaults to highest IPv4 on lo, then other ifs. |
-| (config-router)# network 10.20.30.0 0.0.0.255 area 0 | enable interfaces for ospf with matching IPs    |
-| (config-router)# (no) passive-interface g1/1         | Stop in- and egress ospf hello packets.         |
-| (config-router)# passive-interface default           | Mark all ifs passive by default.                |
+| Command                                                       | Description                                     |
+|:--------------------------------------------------------------|:------------------------------------------------|
+| (config)# router ospf 1                                       | 1 is the pid, not the area.                     |
+| (config-router)# router-id 1.2.3.4                            | Defaults to highest IPv4 on lo, then other ifs. |
+| (config-router)# network 10.20.30.0 0.0.0.255 area 0          | enable interfaces for ospf with matching IPs    |
+| (config-router)# (no) passive-interface g1/1                  | Stop in- and egress ospf hello packets.         |
+| (config-router)# passive-interface default                    | Mark all ifs passive by default.                |
+| (config-router)# default-information originate (always)       | Advertise default routes into a normal area     |
+| (config-router)# auto-cost reference-bandwidth <refbw in Mb/s>| Change reference bandwidth speed                |
+| (config -if)# ip ospf cost 23                                 | Overwrite interface cost to 23                  |
+| (config-if)# bandwidth <bw in kb/s>                           | Change interface bandwidth                      |
 
-default-information orginate (always)
-auto-cost reference bandwidth <refbw in Mb/s> |
-(config-if)# ip ospf cost 23 | overwrite if cost to 23
-bandwidth <kbps> | interface bandwidth
+### Router Types
+| Term                                     | Definition                                                                        |
+|:-----------------------------------------|:----------------------------------------------------------------------------------|
+| Internal Router                          | All OSPF interfaces in one area                                                   |
+| Backbone Router                          | Has one or more OSPF interfaces in the backbone                                   | 
+| Area Boundary Router (ABR)               | Has at least one interface in the backbone area and at least one in another area  |
+| Autonomous System Boundary Router (ASBR) |  Injects routes into OSPF via redistribution from other routing protocols         |
 
 ### OSPF with ipv6 (OSPFv3)
 
