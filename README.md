@@ -147,7 +147,7 @@
 | (config)# errdisable recovery cause psecure-violation            | Reenable if automatically after problem is fixed.   |
 | (config)# errdisable recovery interval 42                        | Recheck every 42 seconds. (min 30, default 300)     |
 
-Port-secuirty violation terms
+Port-security violation terms
 
 | Term       | Definition                                           |
 |:-----------|:-----------------------------------------------------|
