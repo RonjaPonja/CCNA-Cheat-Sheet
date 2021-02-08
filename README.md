@@ -119,7 +119,7 @@
 | # clear [ip] arp 192.168.1.1            | Remove arp entry for ip                                  |
 | # debug arp                             | Show debug messages when receiving/sending arp packets   |
 | # undebug all                           | Disable all previously enabled debugs                    |
-| # show ipv6 neighbors                   | Show neghbor discovery table cache                       |
+| # show ipv6 neighbors                   | Show neighbor discovery table cache                      |
 | # ping 1.2.3.4 [source g1/1]            |                                                          |
 | # traceroute 1.2.3.4 [source g1/1]      |                                                          |
 | # show control-plane host open-ports    | netstat -tulpn on this cisco device, basically           |
@@ -293,7 +293,7 @@ Look at modes again
 
 
 ## Configure a Serial
-Layer 1 link speed is dictated by a CSU/DSU, in a lab without an external CSU/DSU a DTE (Data Termianl Equipment) cable and DCE (Data Communications Equipment) cable are used.
+Layer 1 link speed is dictated by a CSU/DSU, in a lab without an external CSU/DSU a DTE (Data Terminal Equipment) cable and DCE (Data Communications Equipment) cable are used.
 
 | Command                                 | Description                                     |
 |:----------------------------------------|:------------------------------------------------|
@@ -347,11 +347,11 @@ Default mask for standard ACLs: 0.0.0.0
 
 ## NAT
 
-Local addreses are any address as it appears inside the network. Global addresses are any address as it appears outside the network.
+Local addresses are any address as it appears inside the network. Global addresses are any address as it appears outside the network.
 
 | Term           | Definition                                                                   |
 |:---------------|:-----------------------------------------------------------------------------|
-| inside local   | IP address assigned to a host inside the newtork, non-routable               |
+| inside local   | IP address assigned to a host inside the network, non-routable               |
 | inside global  | IP address assigned by Network Information Center or ISP, routable           |
 | outside local  | IP address of a remote host as it appears inside the network, non-routable   |
 | outside global | IP address of a  remote host assigned by the host owner, routable            |
@@ -973,11 +973,11 @@ Here I'll collect crazy default behaviors and how to fix them, I guess..
 | Acknowledgement Number | 4 bytes      | Next expected sequence number, acknowledge all prior Segments.              |
 | Header Lenght          | 4 bits       | Header size in multiples of 4 bytes, sometimes also called Data Offset.     |
 | Reserved               | 3 bits       | N/A                                                                         |
-| Flags                  | 9 bits       | Control Flags like SYN, ACK, FIN, RST and Flags for congestion controll.    |
+| Flags                  | 9 bits       | Control Flags like SYN, ACK, FIN, RST and Flags for congestion control.     |
 | Window size            | 2 bytes      | bytes sender is currently willing to receive                                |
 | Checksum               | 2 bytes      | Header Checksum                                                             |
 | Urgent Pointer         | 2 bytes      | Points to the last 'urgent' byte in the Segment, used when URG flag is set. |
-| Options                | 0 - 320 bits | The Size is determined by Header Lenght. TODO:                              |
+| Options                | 0 - 320 bits | The Size is determined by Header length. TODO:                              |
 | Data                   | variable     |                                                                             |
 
 ### UDP Segment
