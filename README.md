@@ -166,9 +166,6 @@ Port-security violation terms
 
 ## Configure vlans
 
-TODO: auto negotiation
-
-
 Note: Even when a switch port is changed from access to trunk, its access vlan is maintained in the config.
 When automatic trunk negotiation fails (e.g. because I unplug a link between to switches and put it into
 my laptop) the configured access vlan becomes active once again and I might be able to reach network parts
@@ -187,6 +184,7 @@ I'm not supposed to. Always disable DTP / trunk auto negotiation.
 | (config-if)# switchport mode trunk                | Make frames out this port tagged by default             |
 | (config-if)# switchport trunk encapsulation dot1q | Sometimes the default is ciscos old isl.                |
 | (config-if)# switchport trunk native vlan 256     | Except for vlan 256, which is still untagged.           |
+| (config-if)# switchport nonegotiate               | Disable DTP                                             |
 
 ### Layer3 Switch Vlan Config
 
