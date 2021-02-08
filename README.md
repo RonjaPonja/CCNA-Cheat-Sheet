@@ -994,8 +994,10 @@ Here I'll collect crazy default behaviors and how to fix them, I guess..
 
 ## To Sort and Misc
 
-| # disconnect | Disconnect background telnet session |
-telnet 1.2.3.4 23 |
-ssh -l h.acker 1.2.3.4 |
-(config-if)# duplex {full, auto} | Set duplex mode or set it to autonegotiation.
-(config-if)# speed {100, auto} | Set speed or set it to autonegotiation.
+| Command                          | Description                                   |
+|:---------------------------------|:----------------------------------------------|
+| # telnet 1.2.3.4 23              | Telnet to `1.2.3.4` using port `23`           |
+| # disconnect                     | Disconnect background telnet session          |
+| # ssh -l h.acker 1.2.3.4         | SSH to `1.2.3.4` using `h.acker` user         |
+| (config-if)# duplex {full, auto} | Set duplex mode or set it to autonegotiation. |
+| (config-if)# speed {100, auto}   | Set speed or set it to autonegotiation.       |
